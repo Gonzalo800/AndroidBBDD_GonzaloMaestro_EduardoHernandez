@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etNombreJugador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del jugador"/>
+
+    <Spinner
+        android:id="@+id/spinnerEquipos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnAgregarJugador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Jugador"/>
+
+    <Button
+        android:id="@+id/btnEliminarJugador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Eliminar Jugador" />
+
+    <ListView
+        android:id="@+id/lvJugadores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
