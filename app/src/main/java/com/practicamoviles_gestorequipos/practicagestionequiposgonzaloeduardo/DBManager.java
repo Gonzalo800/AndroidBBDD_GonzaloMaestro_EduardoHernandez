@@ -25,6 +25,12 @@ public class DBManager {
         return db.insert(EstructuraBBDD.Equipos.TABLE_NAME, null, values);
     }
 
+    public void modificarEquipo(String nombre, int puntos) {
+        ContentValues values = new ContentValues();
+        values.put(EstructuraBBDD.Equipos.COLUMN_PUNTOS, puntos);
+        db.update(EstructuraBBDD.Equipos.TABLE_NAME, values, "NOMBRE = ?", new String[]{nombre});
+    }
+
     // Obtener todos los equipos
     public List<Equipo> obtenerEquipos() {
         List<Equipo> equipos = new ArrayList<>();

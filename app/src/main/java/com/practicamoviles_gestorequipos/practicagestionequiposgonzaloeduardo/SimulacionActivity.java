@@ -1,11 +1,14 @@
 package com.practicamoviles_gestorequipos.practicagestionequiposgonzaloeduardo;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +37,8 @@ public class SimulacionActivity extends AppCompatActivity {
         btnSimularPartido.setOnClickListener(v -> {
             simularPartido();
             cargarClasificacion();
+            reproducirSonido();
+            reproducirVideo();
         });
     }
 
@@ -50,16 +55,36 @@ public class SimulacionActivity extends AppCompatActivity {
 
         if (resultado == 1) {
             equipo1.setPuntos(equipo1.getPuntos() + 3);
+            dbManager.modificarEquipo(equipo1.getNombre(),equipo1.getPuntos());
             Toast.makeText(this, equipo1.getNombre() + " gana contra " + equipo2.getNombre(), Toast.LENGTH_SHORT).show();
         } else if (resultado == 2) {
             equipo2.setPuntos(equipo2.getPuntos() + 3);
+            dbManager.modificarEquipo(equipo2.getNombre(), equipo2.getPuntos());
             Toast.makeText(this, equipo2.getNombre() + " gana contra " + equipo1.getNombre(), Toast.LENGTH_SHORT).show();
         } else {
             equipo1.setPuntos(equipo1.getPuntos() + 1);
             equipo2.setPuntos(equipo2.getPuntos() + 1);
+            dbManager.modificarEquipo(equipo1.getNombre(), equipo1.getPuntos());
+            dbManager.modificarEquipo(equipo2.getNombre(), equipo2.getPuntos());
             Toast.makeText(this, "Empate entre " + equipo1.getNombre() + " y " + equipo2.getNombre(), Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void reproducirVideo() {
+        VideoView videoView = findViewById(R.id.videoView);
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.videoMoviles;
+        videoView.setVideoURI(Uri.parse(path));
+        videoView.start();
+    }
+
+    private void reproducirSonido() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.sonido);
+        mediaPlayer.start();
+
+        mediaPlayer.setOnCompletionListener(mp -> {
+            mp.release();
+        });
     }
 
     private void cargarClasificacion() {

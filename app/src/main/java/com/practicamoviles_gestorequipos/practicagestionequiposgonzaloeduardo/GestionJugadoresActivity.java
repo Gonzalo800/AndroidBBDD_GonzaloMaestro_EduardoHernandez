@@ -1,5 +1,6 @@
 package com.practicamoviles_gestorequipos.practicagestionequiposgonzaloeduardo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,7 @@ public class GestionJugadoresActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapterEquipos;
     private List<Equipo> listaEquipos;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class GestionJugadoresActivity extends AppCompatActivity {
         etNombreJugador = findViewById(R.id.etNombreJugador);
         spinnerEquipos = findViewById(R.id.spinnerEquipos);
         btnAgregarJugador = findViewById(R.id.btnAgregarJugador);
+        btnEliminarJugador=findViewById(R.id.btnEliminarJugador);
         lvJugadores = findViewById(R.id.lvJugadores);
 
         dbManager = new DBManager(this);
