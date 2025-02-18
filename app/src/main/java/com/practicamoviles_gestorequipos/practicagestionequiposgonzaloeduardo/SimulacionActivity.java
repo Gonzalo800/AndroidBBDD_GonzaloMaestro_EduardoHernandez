@@ -73,7 +73,7 @@ public class SimulacionActivity extends AppCompatActivity {
 
     private void reproducirVideo() {
         VideoView videoView = findViewById(R.id.videoView);
-        String path = "android.resource://" + getPackageName() + "/" + R.raw.videoMoviles;
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.videomoviles;
         videoView.setVideoURI(Uri.parse(path));
         videoView.start();
     }
